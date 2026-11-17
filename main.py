@@ -1,12 +1,11 @@
-
 from fastapi import FastAPI
 
-app = FastAPI(title="GPT2M AI")
+app = FastAPI(title="GPT1M AI")
 
 @app.get("/")
 def home():
     return {
-        "nombre": "GPT 1M",
+        "nombre": "GPT1M",
         "personaje": "Hayato normal",
         "mascota": "Draki",
         "estilo": "Agresivo",
@@ -17,8 +16,8 @@ def home():
 @app.get("/estrategia")
 def estrategia():
     return {
-        "modos": ["Battle Royale", "Duelo de Escuadras"],
-        "armas": "Todas",
-        "precision": "Alta",
-        "reflejos": "Rapidos"
+        "modo": "Battle Royale",
+        "personajes": ["Hayato", "Kelly", "Alok"],
+        "mascotas": ["Draki", "Rockie"],
+        "consejo": "Usa cobertura y trabaja en equipo."
     }
