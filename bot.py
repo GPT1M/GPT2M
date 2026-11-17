@@ -1,37 +1,39 @@
-from fastapi import FastAPI
+import random
 
-app = FastAPI(title="GPT1M AI")
+class GPT1MBot:
+    def __init__(self):
+        self.x = 5
+        self.y = 5
+        self.vida = 100
+        self.modo = "PVP"
 
-@app.get("/")
-def home():
-    return {
-        "nombre": "GPT1M",
-        "estado": "Funcionando",
-        "modos": ["Battle Royale", "PVP", "1 vs 1"]
-    }
+    def decidir(self):
+        if self.vida < 30:
+            return "Buscar cobertura"
 
-@app.get("/estrategia")
-def estrategia():
-    return {
-        "modo": "Battle Royale",
-        "personajes": ["Hayato", "Kelly", "Alok"],
-        "mascotas": ["Draki", "Rockie"],
-        "consejo": "Usa cobertura y trabaja en equipo."
-    }
+        acciones = [
+            "Avanzar",
+            "Moverse a la derecha",
+            "Moverse a la izquierda",
+            "Buscar cobertura"
+        ]
+        return random.choice(acciones)
 
-@app.get("/pvp")
-def pvp():
-    return {
-        "modo": "PVP - Duelo de Escuadras",
-        "personajes": ["Hayato", "Kelly", "Alok"],
-        "consejo": "Coordina con tu equipo y aprovecha la cobertura."
-    }
+    def jugar(self):
+        accion = self.decidir()
 
-@app.get("/1vs1")
-def uno_vs_uno():
-    return {
-        "modo": "1 vs 1",
-        "personaje": "Hayato",
-        "mascota": "Draki",
-        "consejo": "Mantén la calma, practica tu precisión y usa bien la cobertura."
-    }
+        if accion == "Avanzar":
+            self.y += 1
+        elif accion == "Moverse a la derecha":
+            self.x += 1
+        elif accion == "Moverse a la izquierda":
+            self.x -= 1
+
+        return {
+            "modo": self.modo,
+            "accion": accion,
+            "posicion": [self.x, self.y],
+            "vida": self.vida
+        }
+
+bot = GPT1MBot()
