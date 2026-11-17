@@ -35,3 +35,8 @@ def uno_vs_uno():
         "mascota": "Draki",
         "consejo": "Mantén la calma, practica tu precisión y usa bien la cobertura."
     }
+from bot import bot
+
+@app.get("/bot")
+def iniciar_bot():
+    return bot.jugar()
